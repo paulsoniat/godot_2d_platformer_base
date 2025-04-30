@@ -17,5 +17,8 @@ func _draw():
 	for y in range(int(rect.position.y), int(rect.position.y + rect.size.y), int(cell_size.y)):
 		draw_line(Vector2(rect.position.x, y), Vector2(rect.position.x + rect.size.x, y), Color(1, 0, 0, 0.4))
 
+func _editor_draw():
+	_draw()
+
 func _process(delta):
 	queue_redraw()

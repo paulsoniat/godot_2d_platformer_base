@@ -7,13 +7,28 @@ func _physics_process(delta):
 		return
 
 	var collision = parent.move_and_collide(parent.velocity * delta)
-	if collision and collision.get_collider() is TileMap:
-		var tilemap := collision.get_collider() as TileMap
-		var tile_pos = tilemap.local_to_map(collision.get_position())
-		var tile_data = tilemap.get_cell_tile_data(0, tile_pos)  # use correct layer if needed
+
+	if collision:
+		print("✅ COLLISION:", collision)
+
+		# Instead of relying on collider → use world position
+		var world_pos = collision.get_position()
+
+		# Try to find a TileMap node in the scene — you can also use groups if needed
+		var tilemap = get_tree().get_first_node_in_group("tilemap")
+		if not tilemap:
+			print("⚠️ No tilemap found in group.")
+			return
+
+		# Convert world position to tile coords
+		var tile_pos = tilemap.local_to_map(world_pos)
+		var tile_data = tilemap.get_cell_tile_data(tile_pos)
+
+		print("Tile @", tile_pos, " → ", tile_data)
 
 		if tile_data:
 			var type = tile_data.get_custom_data("type")
+			print("Tile type:", type)
 			if type == "hazard":
-				print('player hit hazard')
+				print("💀 Player hit hazard!")
 				eventbus.player_died.emit()

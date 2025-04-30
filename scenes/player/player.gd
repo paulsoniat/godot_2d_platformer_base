@@ -12,19 +12,27 @@ class_name Player
 @export var collision_component: CollisionComponent
 @export var gravity_component: GravityComponent
 
+func _ready():
+	# Connect jump input signal to buffer handler
+	input_component.jump_pressed.connect(jump_component.register_jump_input)
+	# Optional: React to a jump event
+	jump_component.jump_triggered.connect(_on_jump)
+
 func _physics_process(delta):
 	input_component.process_input()
 
-	# Apply jump
-	if input_component.jump_pressed:
-		velocity = jump_component.try_jump(self, velocity)
+	# Update coyote time based on grounded state
+	jump_component.update_state(is_on_floor())
+	jump_component._physics_process(delta)
 
-	# Apply gravity
+	velocity = jump_component.try_jump(self, velocity)
 	velocity = gravity_component.apply_gravity(velocity, delta)
+	velocity.x = movement_component.get_horizontal_velocity(input_component.input_vector.x, velocity.x, delta)
 
-	# Apply horizontal movement
-	var move_x = input_component.input_vector.x
-	velocity.x = move_x * movement_component.get_speed()
-
-	# Move using built-in velocity
+	# Move player
 	move_and_slide()
+
+func _on_jump():
+	print('jump')
+	#animation_component.play_jump()
+	#audio_component.play_jump_sound()
