@@ -1,7 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3ykudhccr01"]
+[gd_scene load_steps=15 format=3 uid="uid://b3ykudhccr01"]
 
 [ext_resource type="Script" uid="uid://brqr6dihy5hvo" path="res://scenes/player/player.gd" id="1_8afob"]
-[ext_resource type="Texture2D" uid="uid://c6folxhfl10gt" path="res://assets/sprites/player/player.png" id="2_dovo2"]
+[ext_resource type="Texture2D" uid="uid://djk3slbfjxj15" path="res://assets/sprites/Sprite-0001-Sheet-Sheet.png" id="2_fm80t"]
 [ext_resource type="PackedScene" uid="uid://clslm4bjlmd2h" path="res://scripts/components/animation_component/animation_component.tscn" id="3_je7p5"]
 [ext_resource type="PackedScene" uid="uid://xeq8nxed16yx" path="res://scripts/components/attack_component/attack_component.tscn" id="4_fm80t"]
 [ext_resource type="PackedScene" uid="uid://ctjtch1y6g3fb" path="res://scripts/components/audio_component/audio_component.tscn" id="5_gx1jg"]
@@ -17,15 +17,11 @@
 radius = 5.0
 height = 16.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
-atlas = ExtResource("2_dovo2")
-region = Rect2(112, 64, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_lvxji"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gmlin")
+"texture": ExtResource("2_fm80t")
 }],
 "loop": true,
 "name": &"idle",

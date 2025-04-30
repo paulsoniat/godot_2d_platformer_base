@@ -5,7 +5,7 @@ class_name GameCamera
 @export var smoothing_speed: float = 5.0
 
 @onready var player = get_parent().get_node("Player")
-
+var current_grid_position: Vector2
 var target_position: Vector2
 
 func _ready():
@@ -19,18 +19,18 @@ func _physics_process(delta):
 func snap_camera():
 	if not player:
 		return
-	var player_pos = player.global_position
-	target_position = (player_pos / grid_cell_size).floor() * grid_cell_size + grid_cell_size / 2
-	global_position = target_position
+	current_grid_position = (player.global_position / grid_cell_size).floor()
+	target_position = current_grid_position * grid_cell_size + grid_cell_size / 2
+	global_position = target_position.round()
 
-func update_camera(delta):
+func update_camera(delta: float):
 	if not player:
 		return
-	var player_pos = player.global_position
-	var desired_center = (player_pos / grid_cell_size).floor() * grid_cell_size + grid_cell_size / 2
 
-	if desired_center != target_position:
-		target_position = desired_center
+	var new_grid_position = (player.global_position / grid_cell_size).floor()
+	if new_grid_position != current_grid_position:
+		current_grid_position = new_grid_position
+		target_position = current_grid_position * grid_cell_size + grid_cell_size / 2
 
 	var smoothing_factor = clamp(smoothing_speed * delta, 0, 1)
-	global_position = global_position.lerp(target_position, smoothing_factor)
+	global_position = global_position.lerp(target_position, smoothing_factor).round()
