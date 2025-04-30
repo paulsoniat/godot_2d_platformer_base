@@ -1,7 +1,7 @@
 extends Camera2D
 class_name GameCamera
 
-@export var grid_cell_size: Vector2 = Vector2(320, 180)
+@export var grid_cell_size: Vector2 = Vector2(640, 360)
 @export var smoothing_speed: float = 5.0
 
 @onready var player = get_parent().get_node("Player")
