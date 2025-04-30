@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dhbv4022fyhh1" path="res://scripts/components/gravity_component/gravity_component.tscn" id="12_fm80t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7p2l"]
+radius = 5.0
+height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
 atlas = ExtResource("2_dovo2")
