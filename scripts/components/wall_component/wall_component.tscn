@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7wg3c1e56or5"]
+
+[ext_resource type="Script" uid="uid://uyuwl0tub3m7" path="res://scripts/components/wall_component/wall_component.gd" id="1_1yte5"]
+
+[node name="WallComponent" type="Node"]
+script = ExtResource("1_1yte5")

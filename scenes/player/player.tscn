@@ -1,0 +1,73 @@
+[gd_scene load_steps=16 format=3 uid="uid://b3ykudhccr01"]
+
+[ext_resource type="Script" uid="uid://brqr6dihy5hvo" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://c6folxhfl10gt" path="res://assets/sprites/player/player.png" id="2_dovo2"]
+[ext_resource type="PackedScene" uid="uid://clslm4bjlmd2h" path="res://scripts/components/animation_component/animation_component.tscn" id="3_je7p5"]
+[ext_resource type="PackedScene" uid="uid://xeq8nxed16yx" path="res://scripts/components/attack_component/attack_component.tscn" id="4_fm80t"]
+[ext_resource type="PackedScene" uid="uid://ctjtch1y6g3fb" path="res://scripts/components/audio_component/audio_component.tscn" id="5_gx1jg"]
+[ext_resource type="PackedScene" uid="uid://dosp27foabton" path="res://scripts/components/collision_component/collision_component.tscn" id="6_ugbui"]
+[ext_resource type="PackedScene" uid="uid://cbvc35lfbhbm2" path="res://scripts/components/health_component/health_component.tscn" id="7_fcs02"]
+[ext_resource type="PackedScene" uid="uid://bd8qsdx5bgam" path="res://scripts/components/input_component/input_component.tscn" id="8_myrg7"]
+[ext_resource type="PackedScene" uid="uid://buxrhemic7g37" path="res://scripts/components/jump_component/jump_component.tscn" id="9_kvlxm"]
+[ext_resource type="PackedScene" uid="uid://dp3o8qujj3nij" path="res://scripts/components/movement_component/movement_component.tscn" id="10_uf5tr"]
+[ext_resource type="PackedScene" uid="uid://c7wg3c1e56or5" path="res://scripts/components/wall_component/wall_component.tscn" id="11_lgqa7"]
+[ext_resource type="PackedScene" uid="uid://dhbv4022fyhh1" path="res://scripts/components/gravity_component/gravity_component.tscn" id="12_fm80t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7p2l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
+atlas = ExtResource("2_dovo2")
+region = Rect2(112, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvxji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmlin")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "jump_component", "attack_component", "wall_component", "animation_component", "audio_component", "health_component", "collision_component", "gravity_component")]
+collision_mask = 6
+script = ExtResource("1_8afob")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+jump_component = NodePath("JumpComponent")
+attack_component = NodePath("AttackComponent")
+wall_component = NodePath("WallComponent")
+animation_component = NodePath("AnimationComponent")
+audio_component = NodePath("AudioComponent")
+health_component = NodePath("HealthComponent")
+collision_component = NodePath("CollisionComponent")
+gravity_component = NodePath("GravityComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x7p2l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lvxji")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="JumpComponent" parent="." instance=ExtResource("9_kvlxm")]
+
+[node name="WallComponent" parent="." instance=ExtResource("11_lgqa7")]
+
+[node name="AnimationComponent" parent="." instance=ExtResource("3_je7p5")]
+
+[node name="AttackComponent" parent="." instance=ExtResource("4_fm80t")]
+
+[node name="AudioComponent" parent="." instance=ExtResource("5_gx1jg")]
+
+[node name="CollisionComponent" parent="." instance=ExtResource("6_ugbui")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("7_fcs02")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("10_uf5tr")]
+
+[node name="InputComponent" parent="." instance=ExtResource("8_myrg7")]
+
+[node name="GravityComponent" parent="." instance=ExtResource("12_fm80t")]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dosp27foabton"]
+
+[ext_resource type="Script" uid="uid://chsq626drj7vh" path="res://scripts/components/collision_component/collision_component.gd" id="1_vkc3l"]
+
+[node name="CollisionComponent" type="Node2D"]
+script = ExtResource("1_vkc3l")
