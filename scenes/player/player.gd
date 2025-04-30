@@ -11,6 +11,7 @@ class_name Player
 @export var health_component: HealthComponent
 @export var collision_component: CollisionComponent
 @export var gravity_component: GravityComponent
+@export var death_component: DeathComponent
 
 func _ready():
 	# Connect jump input signal to buffer handler

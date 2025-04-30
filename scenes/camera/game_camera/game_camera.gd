@@ -34,3 +34,7 @@ func update_camera(delta: float):
 
 	var smoothing_factor = clamp(smoothing_speed * delta, 0, 1)
 	global_position = global_position.lerp(target_position, smoothing_factor).round()
+
+func snap_to_grid_position(grid_pos: Vector2i):
+	var grid = Vector2(grid_pos.x, grid_pos.y)  # Convert to Vector2
+	global_position = grid * grid_cell_size + grid_cell_size / 2

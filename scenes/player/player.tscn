@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3ykudhccr01"]
+[gd_scene load_steps=16 format=3 uid="uid://b3ykudhccr01"]
 
 [ext_resource type="Script" uid="uid://brqr6dihy5hvo" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://djk3slbfjxj15" path="res://assets/sprites/Sprite-0001-Sheet-Sheet.png" id="2_fm80t"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dp3o8qujj3nij" path="res://scripts/components/movement_component/movement_component.tscn" id="10_uf5tr"]
 [ext_resource type="PackedScene" uid="uid://c7wg3c1e56or5" path="res://scripts/components/wall_component/wall_component.tscn" id="11_lgqa7"]
 [ext_resource type="PackedScene" uid="uid://dhbv4022fyhh1" path="res://scripts/components/gravity_component/gravity_component.tscn" id="12_fm80t"]
+[ext_resource type="PackedScene" uid="uid://u5k43yohpnvx" path="res://scripts/components/death_component/death_component.tscn" id="13_gx1jg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7p2l"]
 radius = 5.0
@@ -77,3 +78,5 @@ friction = 2000.0
 [node name="GravityComponent" parent="." instance=ExtResource("12_fm80t")]
 gravity = 1500.0
 max_fall_speed = 1200.0
+
+[node name="DeathComponent" parent="." instance=ExtResource("13_gx1jg")]
