@@ -187,7 +187,7 @@ shape = SubResource("CapsuleShape2D_x7p2l")
 sprite_frames = SubResource("SpriteFrames_lvxji")
 animation = &"walk_right"
 autoplay = "idle"
-frame_progress = 0.122399
+frame_progress = 0.0962365
 
 [node name="JumpComponent" parent="." instance=ExtResource("9_kvlxm")]
 

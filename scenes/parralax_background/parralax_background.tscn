@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0a2labw320iu"]
+
+[ext_resource type="Script" uid="uid://efcxseolo8d3" path="res://scenes/parralax_background/parralax_background.gd" id="1_hcsl4"]
+
+[node name="ParralaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_hcsl4")
+
+[node name="Layer_Far" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer_Far"]
+
+[node name="Layer_Mid" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer_Mid"]
+
+[node name="Layer_Close" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer_Close"]
+
+[node name="Layer_Foreground" type="ParallaxLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer_Foreground"]
