@@ -22,6 +22,8 @@ func _ready():
 
 func _physics_process(delta):
 	input_component.process_input()
+	# Process animation
+	animation_component.update_animation(input_component.input_vector, is_on_floor())
 
 	# Update coyote time based on grounded state
 	jump_component.update_state(is_on_floor())
