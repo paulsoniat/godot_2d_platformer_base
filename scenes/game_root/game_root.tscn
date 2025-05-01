@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf2b6sgh0brqc"]
+[gd_scene load_steps=7 format=3 uid="uid://bf2b6sgh0brqc"]
 
 [ext_resource type="PackedScene" uid="uid://bswc164543b24" path="res://scenes/room_manager/room_manager.tscn" id="1_t0mfs"]
+[ext_resource type="Script" uid="uid://l1wld84ois2d" path="res://scenes/game_root/game_root.gd" id="1_uw77h"]
 [ext_resource type="PackedScene" uid="uid://b5gexnl25pram" path="res://scenes/ui/game_ui.tscn" id="2_5h2fg"]
 [ext_resource type="PackedScene" uid="uid://b3ykudhccr01" path="res://scenes/player/player.tscn" id="3_5h2fg"]
 [ext_resource type="PackedScene" uid="uid://krpn4p1ijqad" path="res://scenes/world_grid/world_grid.tscn" id="4_foegc"]
 [ext_resource type="PackedScene" uid="uid://dnf447hbma5mk" path="res://scenes/camera/game_camera/game_camera.tscn" id="5_uw77h"]
 
 [node name="GameRoot" type="Node"]
+script = ExtResource("1_uw77h")
 
 [node name="RoomManager" parent="." instance=ExtResource("1_t0mfs")]
 
@@ -14,8 +16,8 @@
 
 [node name="GameUi" parent="." instance=ExtResource("2_5h2fg")]
 
-[node name="Player" parent="." instance=ExtResource("3_5h2fg")]
-
 [node name="WorldGrid" parent="." instance=ExtResource("4_foegc")]
 
 [node name="GameCamera" parent="." instance=ExtResource("5_uw77h")]
+
+[node name="Player" parent="." instance=ExtResource("3_5h2fg")]

@@ -1,8 +1,8 @@
 extends Node
 class_name GravityComponent
 
-@export var gravity := 1200.0
-@export var max_fall_speed := 1500.0
+@export var gravity := 1500.0
+@export var max_fall_speed := 1200.0
 @export var jump_cut_multiplier := 0.5
 
 func apply_gravity(velocity: Vector2, delta: float) -> Vector2:

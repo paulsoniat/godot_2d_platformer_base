@@ -3,9 +3,9 @@ class_name JumpComponent
 
 signal jump_triggered
 
-@export var jump_strength: float = 450.0
-@export var coyote_time: float = 0.15
-@export var jump_buffer_time: float = 0.15
+@export var jump_strength: float = 500
+@export var coyote_time: float = 0.25
+@export var jump_buffer_time: float = 0.1
 
 var coyote_timer := 0.0
 var jump_buffer_timer := 0.0

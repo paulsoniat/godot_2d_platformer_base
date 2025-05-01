@@ -8,8 +8,10 @@ var last_checkpoint_grid_position: Vector2i = Vector2i.ZERO
 var player: Node2D = null
 var player_health: int = 3
 var keys_collected: int = 0
+var is_respawning: bool = false
 
 var last_checkpoint_grid: Vector2i = Vector2i.ZERO
+
 
 var last_checkpoint_data: Dictionary = {
 	"scene_path": "res://scenes/levels/level_01.tscn",

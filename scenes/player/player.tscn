@@ -29,7 +29,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "jump_component", "attack_component", "wall_component", "animation_component", "audio_component", "health_component", "collision_component", "gravity_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "jump_component", "attack_component", "wall_component", "animation_component", "audio_component", "health_component", "collision_component", "gravity_component", "death_component")]
 collision_mask = 6
 script = ExtResource("1_8afob")
 input_component = NodePath("InputComponent")
@@ -42,6 +42,7 @@ audio_component = NodePath("AudioComponent")
 health_component = NodePath("HealthComponent")
 collision_component = NodePath("CollisionComponent")
 gravity_component = NodePath("GravityComponent")
+death_component = NodePath("DeathComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_x7p2l")
@@ -52,9 +53,6 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="JumpComponent" parent="." instance=ExtResource("9_kvlxm")]
-jump_strength = 500.0
-coyote_time = 0.25
-jump_buffer_time = 0.1
 
 [node name="WallComponent" parent="." instance=ExtResource("11_lgqa7")]
 
@@ -69,14 +67,9 @@ jump_buffer_time = 0.1
 [node name="HealthComponent" parent="." instance=ExtResource("7_fcs02")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("10_uf5tr")]
-move_speed = 150.0
-acceleration = 2000.0
-friction = 2000.0
 
 [node name="InputComponent" parent="." instance=ExtResource("8_myrg7")]
 
 [node name="GravityComponent" parent="." instance=ExtResource("12_fm80t")]
-gravity = 1500.0
-max_fall_speed = 1200.0
 
 [node name="DeathComponent" parent="." instance=ExtResource("13_gx1jg")]
