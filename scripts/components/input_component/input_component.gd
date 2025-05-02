@@ -1,15 +1,18 @@
 extends Node
 class_name InputComponent
 
+signal jump_pressed
+signal dash_pressed
+signal attack_pressed
+
 var input_vector := Vector2.ZERO
-var jump_pressed := false
-var dash_pressed := false
-var attack_pressed := false
 
 func process_input():
-	input_vector = Vector2.ZERO
 	input_vector.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 
-	jump_pressed = Input.is_action_just_pressed("jump")
-	dash_pressed = Input.is_action_just_pressed("dash")
-	attack_pressed = Input.is_action_just_pressed("attack")
+	if Input.is_action_just_pressed("jump"):
+		emit_signal("jump_pressed")
+	if Input.is_action_just_pressed("dash"):
+		emit_signal("dash_pressed")
+	if Input.is_action_just_pressed("attack"):
+		emit_signal("attack_pressed")

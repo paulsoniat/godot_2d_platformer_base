@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://t2dw3ijuetor"]
+
+[ext_resource type="Script" uid="uid://b1q2qwcl68o86" path="res://scripts/components/checkpoint_component/checkpoint_component.gd" id="1_rd7ke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhooq"]
+
+[node name="CheckpointComponent" type="Area2D"]
+script = ExtResource("1_rd7ke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xhooq")

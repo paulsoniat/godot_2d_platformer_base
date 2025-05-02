@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://ckipsbsglc22v"]
+[gd_scene load_steps=9 format=4 uid="uid://ckipsbsglc22v"]
 
 [ext_resource type="PackedScene" uid="uid://c1c08luqd4vjq" path="res://scenes/tiles/tile_chunks/tile_map_01.tscn" id="1_m802k"]
 [ext_resource type="PackedScene" uid="uid://t2dw3ijuetor" path="res://scripts/components/checkpoint_component/checkpoint_component.tscn" id="2_2djvx"]
@@ -8,16 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bcitmrrk7qot8" path="res://assets/sprites/parralax/p3.png" id="6_r72dd"]
 [ext_resource type="Texture2D" uid="uid://domvcij3rrsl4" path="res://assets/sprites/parralax/p2.png" id="7_ijn0p"]
 [ext_resource type="Texture2D" uid="uid://bfpxslqgror5q" path="res://assets/sprites/parralax/p1.png" id="8_jmes4"]
-[ext_resource type="Texture2D" uid="uid://boh70b26drtfp" path="res://assets/sprites/parralax/pfull.png" id="9_kfebt"]
 
 [node name="Level01" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -100
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(319, 163)
-texture = ExtResource("9_kfebt")
 
 [node name="TileMap01" parent="." instance=ExtResource("1_m802k")]
 position = Vector2(-36, -372)
@@ -43,5 +35,4 @@ spawn_name = "C1_02_Checkpoint"
 position = Vector2(917, 283)
 
 [node name="ParralaxBackground" parent="." instance=ExtResource("4_t0hvh")]
-visible = false
 textures = Array[Texture2D]([ExtResource("5_kfebt"), ExtResource("6_r72dd"), ExtResource("7_ijn0p"), ExtResource("8_jmes4")])
