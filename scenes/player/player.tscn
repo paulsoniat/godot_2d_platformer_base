@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b3ykudhccr01"]
+[gd_scene load_steps=37 format=3 uid="uid://b3ykudhccr01"]
 
 [ext_resource type="Script" uid="uid://brqr6dihy5hvo" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://djk3slbfjxj15" path="res://assets/sprites/player/Sprite-0001-Sheet-Sheet.png" id="2_fm80t"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bxqbrr5y5tdqg" path="res://assets/sprites/player/walk-right.png" id="5_kvlxm"]
 [ext_resource type="PackedScene" uid="uid://dosp27foabton" path="res://scripts/components/collision_component/collision_component.tscn" id="6_ugbui"]
 [ext_resource type="PackedScene" uid="uid://cbvc35lfbhbm2" path="res://scripts/components/health_component/health_component.tscn" id="7_fcs02"]
+[ext_resource type="PackedScene" uid="uid://1pvvcs3d4jn7" path="res://scripts/components/dash_component/dash_component.tscn" id="7_uf5tr"]
 [ext_resource type="PackedScene" uid="uid://bd8qsdx5bgam" path="res://scripts/components/input_component/input_component.tscn" id="8_myrg7"]
 [ext_resource type="PackedScene" uid="uid://buxrhemic7g37" path="res://scripts/components/jump_component/jump_component.tscn" id="9_kvlxm"]
 [ext_resource type="PackedScene" uid="uid://dp3o8qujj3nij" path="res://scripts/components/movement_component/movement_component.tscn" id="10_uf5tr"]
@@ -165,7 +166,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "jump_component", "attack_component", "wall_component", "animation_component", "audio_component", "health_component", "collision_component", "gravity_component", "death_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "jump_component", "attack_component", "wall_component", "animation_component", "audio_component", "health_component", "collision_component", "gravity_component", "death_component", "dash_component")]
 collision_mask = 6
 script = ExtResource("1_8afob")
 input_component = NodePath("InputComponent")
@@ -179,6 +180,7 @@ health_component = NodePath("HealthComponent")
 collision_component = NodePath("CollisionComponent")
 gravity_component = NodePath("GravityComponent")
 death_component = NodePath("DeathComponent")
+dash_component = NodePath("DashComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_x7p2l")
@@ -212,3 +214,5 @@ move_speed = 100.0
 [node name="GravityComponent" parent="." instance=ExtResource("12_fm80t")]
 
 [node name="DeathComponent" parent="." instance=ExtResource("13_gx1jg")]
+
+[node name="DashComponent" parent="." instance=ExtResource("7_uf5tr")]

@@ -12,34 +12,43 @@ class_name Player
 @export var collision_component: CollisionComponent
 @export var gravity_component: GravityComponent
 @export var death_component: DeathComponent
+@export var dash_component: DashComponent
 
 func _ready():
 	# Connect jump input signal to buffer handler
 	input_component.jump_pressed.connect(jump_component.register_jump_input)
 	# Optional: React to a jump event
 	jump_component.jump_triggered.connect(_on_jump)
+	#Dash connection
+	input_component.dash_pressed.connect(_on_dash_pressed)
+	dash_component.dash_started.connect(_on_dash_started)
+	dash_component.dash_finished.connect(_on_dash_finished)
+
 
 
 func _physics_process(delta):
 	input_component.process_input()
-	# Process animation
 	animation_component.update_animation(input_component.input_vector, is_on_floor())
 
-	# Update coyote time based on grounded state
 	jump_component.update_state(is_on_floor())
 	jump_component._physics_process(delta)
 
-	velocity = jump_component.try_jump(self, velocity)
-	velocity = gravity_component.apply_gravity(velocity, delta)
-	velocity.x = movement_component.get_horizontal_velocity(input_component.input_vector.x, velocity.x, delta)
+	dash_component.process_dash_logic(delta, self, input_component.input_vector)
+	if dash_component.is_dashing():
+		dash_component.process_dash_logic(delta, self, input_component.input_vector)
+	else:
+		# Handle movement and jump only if not dashing
+		velocity = jump_component.try_jump(self, velocity)
+		velocity = gravity_component.apply_gravity(velocity, delta)
+		velocity.x = movement_component.get_horizontal_velocity(input_component.input_vector.x, velocity.x, delta)
 
-	# Move player
 	move_and_slide()
 
 func _on_jump():
 	print('jump')
 	#animation_component.play_jump()
 	#audio_component.play_jump_sound()
+	
 	
 func reset_after_respawn():
 
@@ -75,3 +84,18 @@ func reset_after_respawn():
 	set_process(true)
 
 	print("✅ Player reset complete.")
+	
+func _on_dash_pressed():
+	dash_component.try_start_dash(input_component.input_vector)
+
+func _on_dash_started():
+	animation_component.play_dash()
+	# Optional: Hide sprite, disable collisions, etc.
+	$CollisionShape2D.disabled = true
+	modulate.a = 0.5  # semi-invisible
+	health_component.set_invulnerable(true)
+
+func _on_dash_finished():
+	$CollisionShape2D.disabled = false
+	modulate.a = 1.0
+	health_component.set_invulnerable(false)
