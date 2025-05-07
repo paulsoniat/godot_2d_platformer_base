@@ -17,3 +17,7 @@ func update_animation(input_vector: Vector2, is_on_floor: bool):
 		animated_sprite.play("walk_left")
 	else:
 		animated_sprite.play("idle")
+
+func play_dash():
+	if animated_sprite:
+		animated_sprite.play("dash")
