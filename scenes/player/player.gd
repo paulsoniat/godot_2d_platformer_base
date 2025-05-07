@@ -51,7 +51,6 @@ func _on_jump():
 	
 	
 func reset_after_respawn():
-	print("🔄 Resetting player after respawn...")
 
 	# Basic velocity + position safety
 	velocity = Vector2.ZERO
