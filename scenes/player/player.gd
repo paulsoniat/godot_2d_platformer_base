@@ -42,7 +42,6 @@ func _on_jump():
 	#audio_component.play_jump_sound()
 	
 func reset_after_respawn():
-	print("🔄 Resetting player after respawn...")
 
 	# Basic velocity + position safety
 	velocity = Vector2.ZERO

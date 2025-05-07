@@ -8,8 +8,6 @@ func _on_player_died():
 	if global.is_respawning:
 		return  # Prevent double-respawn
 	global.is_respawning = true
-
-	print("☠️ Player died. Respawning...")
 	var room_manager = get_tree().get_root().find_child("RoomManager", true, false)
 	var checkpoint = global.last_checkpoint_data
 	if room_manager:

@@ -20,7 +20,6 @@ func _on_level_transition_requested(data: Dictionary):
 
 
 func load_room(scene_path: String, spawn_point: String = "") -> void:
-	print(scene_path, spawn_point, 'scene spawn on death after checkpoint')
 	if current_room:
 		room_container.remove_child(current_room)
 		current_room.queue_free()
@@ -49,11 +48,8 @@ func load_room(scene_path: String, spawn_point: String = "") -> void:
 
 	# ✅ Step 2: Add to RoomContainer if not already
 	if global.player.get_parent() != room_container:
-		print('player is not in room container')
 		if global.player.get_parent():
-			print(global.player)
 			global.player.get_parent().remove_child(global.player)
-			print(global.player)
 		room_container.add_child(global.player)
 
 	# ✅ Step 3: Position the player at the spawn

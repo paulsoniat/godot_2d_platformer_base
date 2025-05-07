@@ -190,6 +190,7 @@ autoplay = "idle"
 frame_progress = 0.0962365
 
 [node name="JumpComponent" parent="." instance=ExtResource("9_kvlxm")]
+jump_strength = 400.0
 
 [node name="WallComponent" parent="." instance=ExtResource("11_lgqa7")]
 
@@ -204,6 +205,7 @@ frame_progress = 0.0962365
 [node name="HealthComponent" parent="." instance=ExtResource("7_fcs02")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("10_uf5tr")]
+move_speed = 100.0
 
 [node name="InputComponent" parent="." instance=ExtResource("8_myrg7")]
 
